@@ -1,0 +1,260 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{color}
+\usepackage{latexsym}
+
+\setlength{\parindent}{4em}
+% Set the Paragraph indent
+% 1 em means the length of 1 letter "m" in the current font size.
+\setlength{\parskip}{1em}
+% Set the distance between paragraphs
+\renewcommand{\baselinestretch}{2.0}
+% Set the line spacing. 2 means twice the normal spacing
+
+\usepackage[margin=1.2in]{geometry}
+
+%title page
+\title{Design and Simulation of an Elevator System}
+\author{Control Engineering 1}
+\begin{document}
+\maketitle
+
+\textbf{Group Members}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|l|l|l|}
+\hline
+Sl.no & Name & Registration No. & Signature\\\hline
+1. & Machogu Belden & E021-01-2262/2020 &  \\\hline
+2. & Wafula John & E021-01-0998/2020 &  \\\hline
+3. & Tanui Evans & E021-01-2256/2020 &  \\\hline
+4. & Achieng Mary & E021-01-0984/2020 &  \\\hline
+5. & Omiti Calvince & E021-01-2307/2020 &  \\\hline
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+\section{Question}
+%\slshape %slant font
+%\textsl{} % for a small content
+%\textup{} %default font
+%\upshape
+%\itshape %italic font
+%\textit{}
+
+%\scshape % Capitalize
+%\textsc{}
+%\mdseries % default medium size
+%\textmd
+%\bfseries % Bold font
+%\textbf{}
+
+%\rmfamily % Regular roman font
+%\textrm{}
+%\sffamily % Sans Serif Font
+%\textsf{}
+%\ttfamily % Type writer font
+%\texttt{}
+
+%\rm %roman font
+%\it % italic
+%\em %emphasis
+%\bf % bold
+%\sl %slant 
+%\sc %small caps
+%\sf %Sans serif font
+%\tt % type writer font
+
+You are hired as a team of 5 engineers to design, model and simulate an elevator system to transport employees of an upcoming lab to several floors of a cleanroom. Your job is to ensure safety and comfort of the passenger and the payload. To this end, you will be required to model and simulate the elevator system and determine safe parameters for safe and smooth operation.\newline
+
+\textbf{System Description:}
+
+The system is driven by a permanant magnet DC motor. The back emf generated in the armature winding is proportional to the rotor speed, $e_{a} = k_{f} \cdot \theta$ and the motor torque $\tau_{m}$ is proportional to the armature current, $\tau_{m} = k_{t} i_{a}$ where $k_{t}$ and $k_{f}$ are constants.
+\pagebreak
+
+\section{Tasks}
+\subsection{motor dynamics}
+
+\textbf{Question 1:}
+Using KVL On the rotor circuit, derive the voltage equation.\newline
+Applying KVL,
+\begin{eqnarray}
+  V_{a}=e_{a} + i_{a}R_{a} + L_{a} \left( \frac{di_{a}}{dt} \right)
+\end{eqnarray}
+\textbf{Question 2:}Find the laplace transform  of the voltage equation (1)
+\begin{eqnarray}
+  V_{a}(s) = E_{a}(s) + I_{a}(s)R_{a}(s) + sL_{a}(s)I_{a}(s)
+\end{eqnarray}
+\textbf{Question 3:}
+Express the armature current in terms of the supply voltage and the back emf
+\begin{eqnarray}
+  V_{a}(s) - E_{a}(s) = I_{a}R_{a}(s) + sL_{a}I_{a}(s)
+\end{eqnarray}
+making armature current the subject,
+\begin{eqnarray}
+  I_{a}(s) = \frac{{V_{a}(s) - E_{a}(s)}}{{R_{a}(s) + sL_{a}(s)}}
+\end{eqnarray}
+\textbf{Question 4:}
+Draw a standard block diagram representation of the system yielding the armature current.\\
+\subsection{motor dynamics 2}
+
+\textbf{Question 1:}
+Laplace transform of the expression for emf generated and motor torque\\
+given,\\
+back emf, $e_{a} = k_{f} \theta$ where $k_{f}$ is a constant,\\
+motor torque, $\tau_{m} = k_{t}i_{a}$ where $k_{t}$ is a constant
+\begin{eqnarray}
+  E_{a}(s) = L(k_{f} \theta)\\
+  E_{a}(s) = k_{f}L\theta\\
+  L(\theta) = S\theta(s)\\
+  E_{a}(s) = k_{f}s\theta(s)\\
+\end{eqnarray}
+laplace transorm of motor torque,\\
+\begin{eqnarray}
+  T_{m}(s) = Lk_{t}I_{a}
+  T_{m}(s) = k{t}LI_{a}
+\end{eqnarray}
+\textbf{Question 2:}
+Draw a standard block diagram represention of the system yielding the back emf and motor torque\\
+
+\subsection{rotational load dynamics}
+Ignoring belt elasticity, given that the belt ratio is k and that the winch and pulley B have a combined moment of Inertia $J_{w}$ and damping factor $B_{w}$ , forces acting of the pulley-winch arrangement are as in the manual. A rope having damping constant $B_{r}$ and spring constant $k_{r}$ is used to hoist the car. The rope is therefore exerting a force component $F_{b}$ and $F_{k}$ as a result. Assuming $x > r_{w} \theta_{m}$\\
+\textbf{Question 1:}
+Derive the net force equation on the flywheel in time domain\\
+The net force equation on the flywheel can be expressed by the sum of the torques acting on it\\
+\begin{eqnarray}
+  J_{\omega}\frac{d^2\theta_{m}}{dt^2} + B_{w}\frac{d \theta_{m}}{dt} = T_{m} - T_{b} -T{r}
+\end{eqnarray}
+the force, $F_{k}$ is related to the rope dynamics,
+\begin{eqnarray}
+  F_{k} = k_{r}x - B_{r}\frac{dx}{dt}
+\end{eqnarray}
+where;\\
+$J_{w}$ is the moment of inertia of the winch and the pulley B
+
+$B_{w}$ is the damping factor of the winch and pulley B
+
+$\theta_{m}$ is the angle of the flywheel
+
+$k_{t}$ is the motor torque coefficient
+
+$I_{a}$ is the armature current
+
+k is the belt ratio
+
+$F_{b}$ is the component due to the belt
+
+$r_{\omega}$ is the product of the radius and belt ratio
+
+$F_{k}$ is the force component due to the rope
+
+X is the displacement of the rope
+
+$k_{r}$ is the rope spring constant
+
+$B_{r}$ is the rope damping constant\\
+flywheel smooths out delivery of power from the motor to the machine\\
+\begin{eqnarray}
+  T_{m} = k_{t}l_{a}\\
+  T_{b} = \frac{F_{b}}{k}\\
+  T_{r} = \frac{F_{k}}{r\omega}
+\end{eqnarray}
+\textbf{Question 2:}
+Laplace transform the equation\\
+\begin{eqnarray}
+  J_{\omega}s^2\theta_{m}(s) + B_{\omega}s\theta_{m}(s) = k_{t}I_{a}(s) - \frac{f_{b}(s)}{k} - \frac{f_{k}(s)}{r\omega}
+\end{eqnarray}
+\textbf{Question 3:}
+Express the motor torque in terms of the balancing forces\\
+\begin{eqnarray}
+  k_{t}I_{a}(s) = J_{\omega}s^2 \theta_{m}(s) + B_{\omega}s\theta_{m}(s) + \frac{F_{k}(s)}{k} + \frac{f_{b}(s)}{r\omega}
+\end{eqnarray}
+\textbf{Question 4:}
+Draw a standard block diagram representation of the system yielding from the motor torque\\
+\subsection{translational load dynamics}
+An elevator car having bare weight of $M_{t}$ and payload of $M_{p}$ is secured at the end of the rope as shown in the figure  below where $M = M_{t} + M_{p}$\\
+\textbf{Question 1:}
+Derive the net force equation of the translational rope-car system in time domain\\
+The net force can be derived from the Newton's second law,\\
+\begin{eqnarray}
+  m\frac{d^2x}{dt^2} + B_{r}\frac{dx}{dt} = f_{t} -  f_{b}
+\end{eqnarray}
+where,
+
+M is the total mass of the system, $M = M_{t} + M_{p}$
+
+x is the desplacement of the elevator car
+
+$B_{r}$ is the damping factor of the rope
+
+$F_{b}$ is the force exerted by the balancing forces\\
+\textbf{Question 2:}
+Laplace transform the equation
+\begin{eqnarray}
+  Ms^2x(s) + B_{r}sx_{s} = F_{t}(s) + F_{b}(s)
+\end{eqnarray}
+\textbf{Question 3:}
+Express the motor torque in terms of the balancing forces
+\begin{eqnarray}
+  k_{t}I_{a}(s) = Ms^2x(s) + B_{r}sx(s) + F_{b} -F_{t}(s)
+\end{eqnarray}
+\textbf{Question 4:}
+Draw a standard block diagram representation of the system yielding from the motor torque
+
+\subsection{entire system}
+\textbf{Question 1:}
+Combine the blocks developed so far to form the permanent magnet dc motor control system
+to the rope dynamics\\
+Motor dynamics: 
+\begin{eqnarray}
+  k_{t}I_{a}(s) = J_{\omega}s^2 \theta_{m}(s) + B_{\omega}s \theta_{m}(s) + \frac{F_{b}(s)}{k} + \frac{F_{k}(s)}
+  {r \omega}\nonumber\\
+\end{eqnarray}
+Translational load dynamics
+\begin{eqnarray}
+  Ms^2X(s) + B_{r}sX(s) = I_{a}(s) - f_{b}(s)\\
+\end{eqnarray}
+combining the systems,\\
+the motor torque $k_{t}I_{a}(s)$ contributes to the force on the rope $f_{t}(s)$\\
+\begin{eqnarray}
+  f_{t} = k_{t}I_{a}(s)\\
+  Ms^2X(s) + B_{r}SX_{\omega} = k_{t}I_{a}(s) - f_{b}(s)\\
+  Ms^2X(s) + B_{r}sX(s) = J_{\omega}s^2 \theta_{m}(s) + B_{\omega}s \theta_{m}(s) + \frac{f_{b}(s)}{k} +\nonumber 
+  \frac{f_{k}(s)}{r\omega} - f_{b}(s)\\
+\end{eqnarray}
+to obtain the transfer function,express $f_{t}(s)$ in terms of motor input voltage, $V(s)$\\
+\begin{eqnarray}
+  f_{t}(s) = k_{t} (\frac{1}{sL_{a} + R_{a}})(E_{a}(s) + V(s))\\
+\end{eqnarray}
+substitute $f_{t}(s)$ into the translational load dynamics equation\\
+\begin{eqnarray}
+  Ms^2X(s) + B_{r}SX(s) = J_{\omega}s^2 \theta_{m}(s) + B_{\omega}S \theta_{m}(s) + \frac{f_{b}(s)}{k} +\nonumber 
+  \frac{f_{k}(s)}{r\omega} - f_{b}(s)\\
+  X(s) = \frac{G(s)}{1 + H(s)}V(s)\\
+  X(s) = \frac{J_{\omega}S^2 + B_{\omega}S + (\frac{k_{t}}{sl_{a} + R_{a}}) E_{a}(s) + V(s) +\nonumber 
+  (\frac{1}{r\omega}) (-k_{r} - B_{r}S)}{Ms^2 + B_{r}S + \frac{k_{t}k}{(sl_{a} + R_{a}) r\omega} +\nonumber 
+  \frac{k_{t}}{sl_{a} +R_{a}} + \frac{1}{(sl_{a} + R_{a}) r\omega}}\\
+\end{eqnarray}
+the above transfer function represents the relationship between input voltage to the motor and the displacement of the translational load in the laplace domain.
+\pagebreak
+
+\section{Matlab Simulation}
+
+\pagebreak
+
+\section{Discussion}
+
+Elevator systems consists of components such as the elevator car, counterweights, guide rails, pulleys, motors, cables and control systems[1]. The dynamics of the motion of the elevator car are governed by Newtons laws of motion. It involves factors such as the mass of the elevator car, applied forces from the motor and graviational pull. To ensure passanger comfort and safety, the dynamics of accelaration and deccelaration of the elevator car are considered. The dynamics of elevator motors influence its speed, torque and acceleration. The comfort and safety of the elevator system depend on factors such as smooth operation, minimal vibrations, and adequate safety margins. 
+
+Since an elevator is a feedback controller, simulating its root locus helps achieve desired performance and characteristics[2]. As observed from the simulation in the controller gains(K) used render the system unstable and should therefore be adjusted to ensure safety and comfortability of the system.\\
+\textbf{Reccommendations:}\\
+To enhance comfort and safety, the controller parameters can be optimized to minimize overshoot and settling time. Vibration damping mechanisms could also be implemented and emergency breaking systems incorporated.
+\pagebreak
+\end{document}
