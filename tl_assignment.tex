@@ -1,0 +1,209 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{color}
+\usepackage{latexsym}
+
+\setlength{\parindent}{4em}
+% Set the Paragraph indent
+% 1 em means the length of 1 letter "m" in the current font size.
+\setlength{\parskip}{1em}
+% Set the distance between paragraphs
+\renewcommand{\baselinestretch}{2.0}
+% Set the line spacing. 2 means twice the normal spacing
+
+\usepackage[margin=1.2in]{geometry}
+
+%title page
+\title{Group assignment}
+\author{TL and Waveguides}
+\begin{document}
+\maketitle
+
+\textbf{Group Members}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|l|l|}
+\hline
+Sl.no & Name & Registration No. \\\hline
+1. & Machogu Belden & E021-01-2262/2020  \\\hline
+2. & Wafula John & E021-01-0998/2020 \\\hline
+3. & Tanui Evans & E021-01-2256/2020 \\\hline
+4. & Achieng Mary & E021-01-0984/2020 \\\hline
+5. & Omiti Calvince & E021-01-2307/2020 \\\hline
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+%\slshape %slant font
+%\textsl{} % for a small content
+%\textup{} %default font
+%\upshape
+%\itshape %italic font
+%\textit{}
+
+%\scshape % Capitalize
+%\textsc{}
+%\mdseries % default medium size
+%\textmd
+%\bfseries % Bold font
+%\textbf{}
+
+%\rmfamily % Regular roman font
+%\textrm{}
+%\sffamily % Sans Serif Font
+%\textsf{}
+%\ttfamily % Type writer font
+%\texttt{}
+
+%\rm %roman font
+%\it % italic
+%\em %emphasis
+%\bf % bold
+%\sl %slant 
+%\sc %small caps
+%\sf %Sans serif font
+%\tt % type writer font
+\textbf{Assignment}\\
+a). Standing wave ratio(SWR) and the reflection coefficient
+
+$S=\frac{V_{max}}{V_{min}}=\frac{I_{max}}{I_{min}}=\frac{1+T_{L}}{1-T_{L}}$
+
+$I_{max}=\frac{V_{max}}{Z_{0}}$
+
+$I_{min}=\frac{V_{min}}{Z_{0}}$\\
+The voltage reflection coefficient at any point on the line is the ratio of the magnitude of the reflected voltage to that of the incident voltage waves. That is;
+
+$T(z)=\frac{V_{0}^-e^\gamma z}{V_{0}^+e-\gamma z}=\frac{V_{0}^- e^2\gamma z}{V_{0}^T}$
+
+But, $Z=l-l^1$
+
+$T(z)=\frac{V_{0}^- e^2\gamma l e^ -2\gamma l}{V_{0}^+}=T_{L}e^-2\gamma l$\\
+The current reflection coefficient at any point on the line is negative of the voltage reflection coefficient at that point. Thsat is,
+
+$\frac{I_{0}^- e^\gamma l}{I_{0}^+ e^-\gamma l}=-T_{L}$\\
+b). Short circuit, open circuit and matched line characteristics\\
+
+For short circuit, 
+$Z_{L}=0$, 
+
+$Z_{sc}=Z_{in} for Z_{L}=0$
+
+$Z_{sc}=jZ_{0}tan\beta l$
+
+Transmission coefficient=-1, s=infinity\\
+
+For open circuit, 
+
+$Z_{os}=-jZ_{0}cot\beta l$\\
+
+For matched line, 
+
+$Z_{in}=Z_{0}$
+
+Transmission coefficient=0, s=1\\
+c). Transmission lines impedance matching(including the quarter wave transformers)\\
+\textbf{Quarter wave transformer matching}\\
+$Z_{0}$ cannot be equal to $Z_{L}$ as the load is mismatched and a reflected wave exists. Maximum power transfer cannot take place\\
+We recall that,
+
+$l=\frac{\lambda}{4} or \beta l=\frac{2\pi}{\lambda}x\frac{\lambda}{4}=\frac{\pi}{2}$
+
+$Z_{in}=Z_{0}\frac{Z_{L}+jZ_{0}tan\frac{\pi}{2}}{Z_{0}+jZ_{L}tan\frac{\pi}{2}}=\frac{Z_{0}^2}{Z_{L}}$\\
+
+that is,
+
+$\frac{Z_{in}}{Z_{0}}=\frac{Z_{0}}{Z_{L}}$
+
+or, $Z_{in}=\frac{1}{Z_{L}}, y_{in}=Z_{L}$\\
+thus by adding a $\frac{\lambda}{4}$ line on our smith chart, we obtain the input admittance corresponding to a given load impedance.
+
+$Z_{0}=\sqrt{Z_{0}Z_{L}}$\\
+The main disadvantage of the quarter wave transformer is that it is a narrow band or frequency sensitive device.\\
+\textbf{Single stub turner(Matching)}\\
+It eliminates the major drawback of using a quarter wave transformer.
+
+$Z_{0}=Z_{in}=1$\\
+First, we draw the locus $y=1+jb(r=1 circle)$ on the smith chart. If a shunt stub of admittance $y_{s}=-jb$ is introduced at A, then, $y_{in}=1+jb+y_{s}=1+jb-jb=1+j0$\\
+1. A $100\Omega$ transmission line is connected to a load consisting of 50ohm resistors in series with a 10pF capacitor. Find the reflection coefficient at the load for a 100mHz signal
+
+Reflection coefficient, $T_{L}=\frac{Z_{L}-Z_{0}}{Z_{L}+Z{0}}$
+
+$T_{L}=\frac{50-j1590-100}{50-j159+100}$
+
+$=0.76 \angle {-60.70}$\\
+Find the impedance at the input end of the transmission line if its length is 0.125
+$Z_{in}=Z_{0} \frac{Z_{L}+jZ_{0}tan\beta l}{Z_{0}+jZ_{L}tan\beta l}$
+
+$\beta(l)=\frac{2\pi}{\lambda}1.25\lambda$
+
+$=\frac{\pi}{4}$
+
+$Z_{in}=100\frac{50-j159+j100}{100+j150-j159}$
+
+$Z_{in}=29.32\angle{-60.65} \Omega$\\
+2. A lossless transmission line with $Z_{0}=50 \Omega$ and $d=1.5m$ connects a voltage source to a terminal load of $Z_{L}=(50+j50) ohm$. If $V_{g}=60V$, operating frequency f=100mHz, and $Z_{g}=50\Omega$ and assuming that the speed of the wave along the transmission line equalt to the speed of light, C, find the distance of the first voltage maximum from the load.
+
+$\lambda=\frac{c}{f}=\frac{3*10^8}{10^8}=3m$
+
+$T_{L}=\frac{Z_{L}-Z_{0}}{Z_{L}=Z_{0}}$
+
+$T_{L}=\frac{50+j50-50}{50+j50+50}=0.45\angle{1.11radians}$
+
+$l_{m}=\frac{\theta_{L}\lambda}{4\pi}+\frac{n\lambda}{2}$\\
+when n=0, 
+
+$l_{m}=\frac{1.11}{4\pi}\lambda=0.09\lambda$
+
+$l_{m}=0.09*3=0.27$ (from one load)\\
+What is the power delivered to the load $P_{L}$?
+
+$Z_{in}=Z_{0}\frac{Z_{L}+jZ_{0}tan\beta l}{Z_{0}+jZ_{L}+tan\beta l}$
+
+$\beta=\frac{2\pi}{3}$
+
+$l=1.5$
+
+$Z_{in}=50+j50\Omega$
+
+$I_{in}=\frac{V_{g}}{Z_{g}+Z_{in}}=\frac{6}{50+50+j50}=0.536656\angle{-26.56}$
+
+$P_{L}=P_{in}=0.5*0.536656^2 * 50=7.2W$\\
+3. A 40m long transmission line has $V_{g}=15\angle{0} V_{rms}$, $Z_{0}=30+j60 \Omega$, and $V_{L}=5\angle{-48} V_{rms}$. If the lin eis matched to the load, calculate: The input impedance $Z_{in}$\\
+Hints: $Z_{0}=30+j60\Omega, b). 0.112\angle{-63.43} A, 7.5 \angle{0} V_{rms}, c). 0.0101+j0.2094$
+
+$Z_{in}=30+j60$\\
+The sending end current and voltage
+
+$V_{in}=\frac{Z_{in}V_{g}}{Z_{in}+Z_{0}}=\frac{V_{g}}{2} as Z_{in}=Z_{0}$
+
+$V_{in}=7.5\angle{0} V_{rms}$
+
+$I_{in}=\frac{V_{g}}{2Z_{0}}=\frac{15\angle{0}}{2(30+j60)}$
+
+$I_{in}=0.112\angle{-63.43}$\\
+The propagation constant, $\gamma$
+
+$e^\alpha l e^j\beta l = 1.5\angle{48}$
+
+$e^-\gamma l= \frac {V_{0}^+}{V_{L}}=\frac{7.5\angle{0}}{5 \angle{-48}}=1.5 \angle{48}$
+
+$ln[e^\alpha l e^j\beta l]= ln[1.5\angle{48}]$
+
+$\alpha l+j\beta l= ln[1.5\angle{48}$
+
+$\alpha+j\beta=\frac{ln[1.5\angle{48}]}{l}$
+
+$\alpha=\frac{ln 1.5}{40}=0.0101 N_{p}/m$
+
+$\beta=\frac{pi}{150}=0.02094 rad/m$
+
+$\gamma=\alpha+j\beta=0.0101+j0.02094/m$
+
+\end{document}
